@@ -1,10 +1,12 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const path = require('path'); // Agrega esta línea al inicio con los demás requires
 
 // Middlewares
 app.use(cors()); // Permite peticiones desde otros orígenes (como React)
 app.use(express.json()); // Permite leer JSON en las peticiones
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Rutas
 const authRoutes = require('./src/routes/auth.routes');
